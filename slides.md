@@ -18,6 +18,7 @@ highlighter: shiki
   <li>データセットの不足</li>
   <li>色から輪郭を抽出していたため、雑に輪郭を抽出していた</li>
   <li>データセットの解像度が低い</li>
+  <li>学習難易度は上がるが向きは正規化しないほうが良さそう</li>
 </ul>
 
 <div grid="~ cols-2 gap-2" m="t-2">
@@ -52,6 +53,17 @@ highlighter: shiki
   </div>
 </v-click>
 
+<!--
+機能
+- 拡大、縮小
+- 移動
+- フォルダ分け
+
+編集機能
+- 消しゴム
+- 消しゴムの消しゴム(つまり削除を元に戻す)
+-->
+
 ---
 
 ## 正規化ツールの開発
@@ -82,6 +94,16 @@ highlighter: shiki
     <img src="/image-1-1.png" style="object-fit: contain;">
   </div>
 </v-click>
+
+<!--
+左から
+- 元の画像
+- u2net
+- isnet_general_use
+- Anything Model (SAM) Meta製
+- BiRefNet-general
+- BiRefNet-general lite
+-->
 
 ---
 
@@ -121,12 +143,23 @@ highlighter: shiki
   </div>
 </v-click>
 
+<!--
+- 左右軸: 色相
+- 上下軸: 彩度
+- クリック軸: 明度
+
+
+彩度、明度変更はある程度効果ありそう
+
+iPhoneカメラはもともと彩度高め、さらに高いカメラも考慮する
+-->
+
 ---
 
 ## データ拡張
 
 <ul>
-  <li>大きさと位置を変更する</li>
+  <li>大きさ、位置、向きを変更する</li>
   <li>背景にノイズを加える</li>
 </ul>
 
@@ -136,6 +169,10 @@ highlighter: shiki
   <img src="/hi(81)_2.jpg">
   <img src="/hi(81)_3.jpg">
 </div>
+
+<!--
+パーリンノイズを1-5回重ねたもの
+-->
 
 ---
 
@@ -154,10 +191,6 @@ highlighter: shiki
   <img src="/hi(81)_2_3.png">
 </div>
 
-<!--
-aa確率的勾配降下法
--->
-
 ---
 
 ## 学習
@@ -168,3 +201,10 @@ aa確率的勾配降下法
 </ul>
 
 <img src="/画像 (2).png" style="object-fit: contain; height: 500px;">
+
+<!--
+SGD: 確率的勾配降下法
+
+テストデータでLoss 0.5
+MobileNetはLossが下がりにくいらしい？
+-->
